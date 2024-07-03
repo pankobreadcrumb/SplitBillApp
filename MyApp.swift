@@ -14,13 +14,13 @@ struct MyApp: App {
                         ContentView()
                     } else {
                         Text("Divvy")
-                            .font(.largeTitle)
+                            .font(.largeTitle.bold())
                             .foregroundColor(.purple)
                             .opacity(isTitleVisible ? 1 : 0)  // Apply opacity based on isTitleVisible
                             .onAppear {
                                 // After 3 seconds, start fading out the title
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                    withAnimation(.easeOut(duration: 1.8)) {  // 2 seconds fade-out duration
+                                    withAnimation(.easeOut(duration: 1.6)) {  // 2 seconds fade-out duration
                                         isTitleVisible = false
                                     }
                                     

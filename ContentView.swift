@@ -6,14 +6,17 @@ struct ContentView: View {
             VStack(spacing: 25) {
                 NavigationLink(destination: ImportReceiptView()) {
                     CustomButton(title: "Import a Receipt")
+                        .cornerRadius(20)
                 }
                 
                 NavigationLink(destination: ManualVals()) {
                     CustomButton(title: "Manual Entry")
+                        .cornerRadius(20)
                 }
                 
                 NavigationLink(destination: TakePhotoView()) {
                     CustomButton(title: "Take Photo")
+                    .cornerRadius(20)
                 }
             }
         }
@@ -31,7 +34,7 @@ struct CustomButton: View {
         }
             .frame(width: 160, height: 50)
             .padding()
-            .background(Color.purple)
+            .background(Color("MainPurple"))
             .foregroundColor(.white)
             .cornerRadius(0)
         }
