@@ -8,19 +8,20 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Splitster2",
+    name: "Divvy",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "Splitster2",
+            name: "Divvy",
             targets: ["AppModule"],
             bundleIdentifier: "tangtools.Splitster2",
+            teamIdentifier: "K9K52KRDDP",
             displayVersion: "1.0",
             bundleVersion: "1",
-            appIcon: .placeholder(icon: .cloud),
-            accentColor: .presetColor(.green),
+            appIcon: .asset("AppIcon"),
+            accentColor: .asset("AccentColor"),
             supportedDeviceFamilies: [
                 .pad,
                 .phone
