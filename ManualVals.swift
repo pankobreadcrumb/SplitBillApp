@@ -1,18 +1,17 @@
-//
-//  ManualVals.swift
-//  Splitster2
-//
-//  Created by Tang Favish
-//
 import SwiftUI
 
 struct ManualVals: View {
     @State private var items = [Item]()
     @State private var taxPercentage = ""
     @State private var tipPercentage = ""
-    
+
     var subtotal: Double {
         items.reduce(0) { $0 + (Double($1.cost) ?? 0) }
+    }
+    
+    var tipAmount: Double {
+        let tipPercent = Double(tipPercentage) ?? 0
+        return subtotal * (tipPercent / 100)
     }
     
     var body: some View {
@@ -42,6 +41,10 @@ struct ManualVals: View {
                     Text("Subtotal: $\(String(format: "%.2f", subtotal))")
                 }
                 
+                Section(header: Text("Tip Amount")) {
+                    Text("Tip Amount: $\(String(format: "%.2f", tipAmount))")
+                }
+                
                 Section(header: Text("Results")) {
                     ForEach(items.indices, id: \.self) { index in
                         let cost = Double(items[index].cost) ?? 0
@@ -52,10 +55,6 @@ struct ManualVals: View {
                         let individualShare = totalCost == 0 ? 0 : (tax + tip + totalCost) * (cost / totalCost)
                         
                         Text("\(items[index].name): \(String(format: "%.2f", individualShare))")
-                    }
-                    Section(header: Text("Calculate Tip Amount in $")) {
-
-
                     }
                 }
             }
@@ -68,3 +67,4 @@ struct ManualVals: View {
         var cost: String
     }
 }
+
